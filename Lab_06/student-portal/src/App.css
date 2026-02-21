@@ -1,0 +1,345 @@
+/* App.css - основные стили для Lab 6.1 */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background-color: #f5f5f5;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background-color: #2c3e50;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-brand a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #34495e;
+}
+
+/* Основной контент */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Футер */
+.footer {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+/* Стили для Home page */
+.home-container {
+  text-align: center;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4rem 2rem;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.feature-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.feature-card h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.feature-card p {
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.feature-link {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.feature-link:hover {
+  transform: translateX(5px);
+}
+
+/* Стили для Courses page */
+.courses-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.courses-container h2 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.courses-subtitle {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.course-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.course-card h3 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.course-instructor {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.course-description {
+  color: #777;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.course-link {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.course-link:hover {
+  text-decoration: underline;
+}
+
+/* Стили для About page */
+.about-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.about-container h2 {
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.about-section {
+  margin-bottom: 2.5rem;
+}
+
+.about-section h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 0.5rem;
+}
+
+.about-section p {
+  color: #444;
+  line-height: 1.6;
+}
+
+.about-list {
+  list-style: none;
+}
+
+.about-list li {
+  padding: 0.5rem 0;
+  color: #444;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.value-item {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.value-item h4 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.value-item p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.contact-info {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.contact-info p {
+  margin: 0.5rem 0;
+  color: #444;
+}
+
+/* Стили для NotFound page */
+.not-found-container {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 3rem;
+}
+
+.not-found-content h2 {
+  font-size: 6rem;
+  color: #e74c3c;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.not-found-content h3 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.not-found-content p {
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.not-found-links {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.not-found-links ul {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.not-found-links li {
+  margin: 0.5rem 0;
+}
+
+.not-found-links a {
+  color: #3498db;
+  text-decoration: none;
+  padding: 0.5rem;
+  display: block;
+  transition: background 0.3s ease;
+}
+
+.not-found-links a:hover {
+  background: #e9ecef;
+  border-radius: 4px;
+}
+
+.back-button {
+  padding: 0.75rem 1.5rem;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.back-button:hover {
+  background: #2980b9;
+}
