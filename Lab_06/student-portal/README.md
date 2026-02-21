@@ -1,73 +1,61 @@
-# React + TypeScript + Vite
+# Lab 6.2: Route Parameters & Dynamic Pages
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Student Name: [Ваше имя]
+## Date: [Дата]
 
-Currently, two official plugins are available:
+## Overview
+This project extends the Student Portal from Lab 6.1 with dynamic routing, 
+course details pages, and query parameter sorting.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## New Features
 
-## React Compiler
+### 1. Dynamic Routes with useParams
+- Added `/courses/:id` route for individual course pages
+- Used `useParams` hook to access the course ID from URL
+- Example: `/courses/1` displays course with ID 1
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 2. Data Loading with loader
+- Implemented `loader` function in route configuration
+- Data loads before component renders using `useLoaderData`
+- Added error handling for invalid course IDs
 
-## Expanding the ESLint configuration
+### 3. Query Parameters with useSearchParams
+- Added sorting functionality to Courses page
+- URL updates: `/courses?sort=asc` or `/courses?sort=desc`
+- Used `useSearchParams` hook to read and update query parameters
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Key Differences: useParams vs useSearchParams
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+| Hook | Purpose | Example URL | When to Use |
+|------|---------|-------------|-------------|
+| `useParams` | Access dynamic segments in path | `/courses/:id` → `/courses/1` | For required parameters that identify a specific resource |
+| `useSearchParams` | Access query string parameters | `?sort=asc` → `/courses?sort=asc` | For optional parameters like filters, sorting, pagination |
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## URL Parameters vs Query Parameters
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### URL Parameters (`/courses/:id`)
+- Used for **required** information
+- Part of the resource identification
+- Example: `/users/123` (get user with ID 123)
+- More SEO-friendly
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Query Parameters (`?sort=asc`)
+- Used for **optional** information
+- For filtering, sorting, pagination
+- Example: `/products?category=books&sort=price`
+- Order doesn't matter, can be optional
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Testing Instructions
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. **Dynamic Routes**: Click on any course card to see its details
+2. **Invalid IDs**: Try `/courses/999` to see error handling
+3. **Sorting**: Click "Sort" button to toggle between A→Z and Z→A
+4. **URL Updates**: Observe how the URL changes with sorting
+
+## Git Commits for Lab 6.2
+- feat: add data.ts with course interface and mock data
+- feat: add CourseDetail component with useParams and useLoaderData
+- feat: add dynamic route /courses/:id with loader and errorElement
+- feat: add sorting with useSearchParams and links to course details
+- style: add styles for course detail page and sorting
+- docs: add README for Lab 6.2

@@ -1,60 +1,47 @@
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
+import { courses } from './data'
 import './App.css'
 
-interface Course {
-  id: number;
-  title: string;
-  instructor: string;
-  description: string;
-}
-
 function Courses() {
-  const courses: Course[] = [
-    {
-      id: 1,
-      title: "Introduction to React",
-      instructor: "Dr. Jane Smith",
-      description: "Learn the fundamentals of React, including components, state, props, and hooks."
-    },
-    {
-      id: 2,
-      title: "TypeScript Masterclass",
-      instructor: "Prof. John Doe",
-      description: "Master TypeScript from basics to advanced concepts. Learn about types, interfaces, and generics."
-    },
-    {
-      id: 3,
-      title: "Node.js Backend Development",
-      instructor: "Dr. Sarah Johnson",
-      description: "Build scalable backend applications with Node.js, Express, and MongoDB."
-    },
-    {
-      id: 4,
-      title: "Full-Stack Web Development",
-      instructor: "Prof. Mike Wilson",
-      description: "Comprehensive course covering frontend and backend development."
-    },
-    {
-      id: 5,
-      title: "Python for Beginners",
-      instructor: "Dr. Emily Brown",
-      description: "Learn Python programming from scratch. Perfect for beginners."
+  const [searchParams, setSearchParams] = useSearchParams()
+  const sortOrder = searchParams.get("sort") || "asc"
+
+  const sortedCourses = [...courses].sort((a, b) => {
+    if (sortOrder === "desc") {
+      return b.title.localeCompare(a.title)
     }
-  ]
+    return a.title.localeCompare(b.title)
+  })
+
+  const toggleSort = () => {
+    setSearchParams({
+      sort: sortOrder === "asc" ? "desc" : "asc"
+    })
+  }
 
   return (
     <div className="courses-container">
-      <h2>Our Courses</h2>
-      <p className="courses-subtitle">Explore our wide range of programming courses</p>
+      <div className="courses-header">
+        <h2>Our Courses</h2>
+        <button onClick={toggleSort} className="sort-button">
+          Sort: {sortOrder === "asc" ? "▲ A to Z" : "▼ Z to A"}
+        </button>
+      </div>
+      <p className="courses-subtitle">Click on any course to see details</p>
       
       <div className="courses-grid">
-        {courses.map((course) => (
+        {sortedCourses.map((course) => (
           <div key={course.id} className="course-card">
             <h3>{course.title}</h3>
             <p className="course-instructor"> {course.instructor}</p>
-            <p className="course-description">{course.description}</p>
+            <p className="course-level">
+              Level: <span className={`level-tag ${course.level}`}>
+                {course.level}
+              </span>
+            </p>
+            <p className="course-description">{course.description.substring(0, 100)}...</p>
             <Link to={`/courses/${course.id}`} className="course-link">
-              Learn More →
+              View Details →
             </Link>
           </div>
         ))}
