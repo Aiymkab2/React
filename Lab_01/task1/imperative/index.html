@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imperative Toggle (jQuery)</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .highlight {
+            background-color:rgb(252, 188, 183);
+        }
+        body {
+            padding: 20px;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h2>Imperative Toggle with jQuery</h2>
+    <button id="toggleBtn">Toggle Highlight</button>
+    <p id="textpParagraph">Click the button!</p>
+    <script>
+        $(document).ready(function () {
+            $("#toggleBtn").click(function () {
+                $("#textpParagraph").toggleClass("highlight");
+            });
+        });
+    </script>
+</body>
+</html>
